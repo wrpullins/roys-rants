@@ -1,0 +1,25 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  height: 100%;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  min-width: 320px;
+  min-height: 500px;
+}
+
+body {
+  display: flex;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

@@ -1,0 +1,28 @@
+import styled from "@emotion/styled";
+import type { FC, PropsWithChildren } from "react";
+import { useTheme } from "../theme/useTheme";
+import type { Colors } from "../theme/colors";
+
+type AnchorProps = { href: string } & PropsWithChildren;
+
+const StyledAnchor = styled.a<{ colors: Colors }>`
+  color: ${({ colors }) => colors.TextSecondary};
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const Anchor: FC<AnchorProps> = ({ href, children }) => {
+  const { theme } = useTheme();
+
+  return (
+    <StyledAnchor colors={theme.colors} href={href}>
+      {children}
+    </StyledAnchor>
+  );
+};
+
+export default Anchor;
