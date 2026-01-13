@@ -7,6 +7,7 @@ import Row from "../../components/Row";
 import { css } from "@emotion/react";
 import { useTheme } from "../../theme/useTheme";
 import type { Colors } from "../../theme/theme";
+import { MediaSizes } from "../../theme/mediaSizes";
 
 type AnimatedLinkProps = {
   route: string;
@@ -46,6 +47,31 @@ const style = (colors: Colors) => css`
   &:hover .label {
     opacity: 1;
     transform: translateX(0);
+  }
+
+  @media (width <= ${MediaSizes.small}) {
+    .label {
+      display: inline-block;
+
+      white-space: nowrap;
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    svg {
+      transition: transform 0.4s ease;
+      flex-shrink: 0;
+    }
+
+    &:hover svg {
+      transform: none;
+    }
+
+    &:hover .label {
+      opacity: 1;
+      transform: none;
+    }
   }
 `;
 

@@ -1,7 +1,8 @@
+/** @jsxImportSource @emotion/react */
 import type { FC } from "react";
 import Page from "../../components/Page";
 import { FancyTitle } from "./FancyTitle";
-import TextBox from "./TextBox";
+import TextBox from "../../components/TextBox";
 import Box from "../../components/Box";
 import Anchor from "../../components/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
@@ -13,12 +14,18 @@ import {
   faBlog,
   faImages,
 } from "@fortawesome/free-solid-svg-icons";
+import { css } from "@emotion/react";
+
+const mainContenntStyle = css`
+  max-width: 650px;
+  min-width: 300px;
+`;
 
 const Home: FC = () => {
   return (
     <Page centeredContent>
       <ThemeToggle />
-      <Box>
+      <Box css={mainContenntStyle}>
         <FancyTitle />
 
         <Row

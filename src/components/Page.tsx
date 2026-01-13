@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { useTheme } from "../theme/useTheme";
 import { useEffect, type PropsWithChildren } from "react";
 import type { Theme } from "../theme/theme";
+import { MediaSizes } from "../theme/mediaSizes";
 
 const PageContainer = styled.div<{ theme: Theme; centeredContent: boolean }>`
   h1,
@@ -18,8 +19,8 @@ const PageContainer = styled.div<{ theme: Theme; centeredContent: boolean }>`
 
   color: ${({ theme }) => theme.colors.text.primary};
   font-family: ${({ theme }) => theme.typography.body.font};
-
   background-color: ${({ theme }) => theme.colors.background};
+
   height: 100%;
   padding: 1rem;
 
@@ -31,6 +32,12 @@ const PageContainer = styled.div<{ theme: Theme; centeredContent: boolean }>`
       justify-content: center;
       
     `}
+
+  @media (width <= ${MediaSizes.small} ) {
+    h1 {
+      font-size: 1.3rem;
+    }
+  }
 `;
 
 type PageProps = PropsWithChildren & {

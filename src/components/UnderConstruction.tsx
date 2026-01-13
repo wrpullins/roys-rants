@@ -4,6 +4,7 @@ import Box from "./Box";
 import { css } from "@emotion/react";
 import AnimatedLink from "../pages/home/AnimatedLink";
 import { faBackspace } from "@fortawesome/free-solid-svg-icons";
+import { MediaSizes } from "../theme/mediaSizes";
 
 type UnderConstructionProps = {
   page: string;
@@ -12,6 +13,12 @@ type UnderConstructionProps = {
 const style = () => css`
   img {
     width: 600px;
+  }
+
+  @media (width <= ${MediaSizes.small}) {
+    img {
+      width: 300px;
+    }
   }
 `;
 

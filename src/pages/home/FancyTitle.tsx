@@ -2,6 +2,7 @@ import { useEffect, type FC } from "react";
 import type { Theme } from "../../theme/theme";
 import { useTheme } from "../../theme/useTheme";
 import styled from "@emotion/styled";
+import { MediaSizes } from "../../theme/mediaSizes";
 
 const StyledFancyTitle = styled.div<{ theme: Theme }>`
   position: relative;
@@ -24,6 +25,22 @@ const StyledFancyTitle = styled.div<{ theme: Theme }>`
       border-top: 1px solid ${({ theme }) => theme.colors.secondary};
       font-size: 1rem;
     }
+  }
+
+  @media (width <= ${MediaSizes.small} ) {
+    img {
+      width: 300px;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      bottom: 0.4rem;
+      left: 9rem;
+
+      div {
+        font-size: 0.8rem;
+      }
+
   }
 `;
 

@@ -1,15 +1,14 @@
 import styled from "@emotion/styled";
 import type { FC, PropsWithChildren } from "react";
-import { useTheme } from "../../theme/useTheme";
-import type { Theme } from "../../theme/theme";
+import { useTheme } from "../theme/useTheme";
+import type { Theme } from "../theme/theme";
 
 const StyledTextBox = styled.pre<{ theme: Theme }>`
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.foreground};
   padding: 1rem;
-  max-width: 600px;
-
+  line-height: 1.5rem;
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
