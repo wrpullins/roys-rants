@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import type { FC, PropsWithChildren } from "react";
 import { useTheme } from "../../theme/useTheme";
-import type { Colors, Theme } from "../../theme/theme";
+import type { Theme } from "../../theme/theme";
 
 const StyledTextBox = styled.pre<{ theme: Theme }>`
   border: 1px solid ${({ theme }) => theme.colors.secondary};

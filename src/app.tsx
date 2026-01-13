@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { type FC } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import NotFound from "./pages/NotFound";
@@ -8,8 +8,6 @@ import Login from "./pages/login/Login";
 import CV from "./pages/cv/CV";
 
 const App: FC = () => {
-  const [count, setCount] = useState(0);
-
   return (
     <Routes>
       <Route path="/" element={<Home />} />
