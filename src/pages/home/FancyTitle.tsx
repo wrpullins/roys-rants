@@ -1,9 +1,9 @@
-import type { FC } from "react";
-import type { Colors } from "../../theme/colors";
+import { useEffect, type FC } from "react";
+import type { Theme } from "../../theme/theme";
 import { useTheme } from "../../theme/useTheme";
 import styled from "@emotion/styled";
 
-const StyledFancyTitle = styled.div<{ colors: Colors }>`
+const StyledFancyTitle = styled.div<{ theme: Theme }>`
   position: relative;
 
   img {
@@ -16,12 +16,12 @@ const StyledFancyTitle = styled.div<{ colors: Colors }>`
     font-size: 3rem;
     bottom: 3rem;
     left: 20rem;
-    font-family: courier;
-    font-weight: bold;
-    color: ${({ colors }) => colors.TextSecondary};
+    font-family: ${({ theme }) => theme.typography.heading.font};
+    font-weight: ${({ theme }) => theme.typography.heading.weight};
+    color: ${({ theme }) => theme.colors.text.secondary};
 
     div {
-      border-top: 1px solid ${({ colors }) => colors.Secondary};
+      border-top: 1px solid ${({ theme }) => theme.colors.secondary};
       font-size: 1rem;
     }
   }
@@ -29,9 +29,11 @@ const StyledFancyTitle = styled.div<{ colors: Colors }>`
 
 export const FancyTitle: FC = () => {
   const { theme } = useTheme();
-
+  useEffect(() => {
+    console.log(theme);
+  });
   return (
-    <StyledFancyTitle colors={theme.colors}>
+    <StyledFancyTitle theme={theme}>
       <img src="/roy_ranting.svg" />
       <div className="title">
         Roys Rants

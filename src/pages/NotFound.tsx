@@ -2,17 +2,22 @@ import { useEffect, useState, type FC } from "react";
 import Page from "../components/Page";
 import styled from "@emotion/styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faLinkSlash } from "@fortawesome/free-solid-svg-icons";
-import type { Colors } from "../theme/colors";
+import {
+  faBackspace,
+  faLink,
+  faLinkSlash,
+} from "@fortawesome/free-solid-svg-icons";
+import type { Theme } from "../theme/theme";
 import { useTheme } from "../theme/useTheme";
+import AnimatedLink from "./home/AnimatedLink";
 
-const StyledNotFound = styled.div<{ colors: Colors }>`
+const StyledNotFound = styled.div<{ theme: Theme }>`
   display: flex;
   align-items: center;
   justify-content: center;
 
   .icon {
-    color: ${({ colors }) => colors.Error};
+    color: ${({ theme }) => theme.colors.error};
     font-size: 3rem;
     padding: 2rem;
     animation: flip 0.6s ease-in-out;
@@ -23,7 +28,9 @@ const StyledNotFound = styled.div<{ colors: Colors }>`
     flex-direction: column;
 
     .title {
-      font-weight: bold;
+      font-family: ${({ theme }) => theme.typography.heading.font};
+      font-weight: ${({ theme }) => theme.typography.heading.weight};
+      color: ${({ theme }) => theme.colors.secondary};
       font-size: 2rem;
     }
   }
@@ -58,17 +65,22 @@ const NotFound: FC = () => {
 
   return (
     <Page centeredContent>
-      <StyledNotFound colors={theme.colors}>
+      <StyledNotFound theme={theme}>
         <FontAwesomeIcon
-          key={broken ? "broken" : "linked"} // 👈 forces animation replay
+          key={broken ? "broken" : "linked"}
           icon={broken ? faLinkSlash : faLink}
           className="icon"
         />
         <div className="text">
-          <div className="title">404 - This URL does not exist</div>
+          <div className="title">404: This URL does not exist</div>
           <div className="message">
             Not sure how you arrived here, so fuck off.
           </div>
+          <AnimatedLink
+            route="/home"
+            label="Return to Home"
+            icon={faBackspace}
+          />
         </div>
       </StyledNotFound>
     </Page>

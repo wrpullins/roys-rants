@@ -34,11 +34,7 @@ const Home: FC = () => {
           />
           <AnimatedLink route="/blog" label="Blog" icon={faBlog} />
           <AnimatedLink route="/gallery" label="Gallery" icon={faImages} />
-          <AnimatedLink
-            route="/cv"
-            label="Curriculum Vitae"
-            icon={faAddressCard}
-          />
+          <AnimatedLink route="/cv" label="CV" icon={faAddressCard} />
         </Row>
 
         <TextBox>

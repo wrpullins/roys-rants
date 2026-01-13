@@ -4,7 +4,7 @@ import UnderConstruction from "../../components/UnderConstruction";
 
 const Blog: FC = () => {
   return (
-    <Page>
+    <Page centeredContent>
       <UnderConstruction page="Blog" />
     </Page>
   );

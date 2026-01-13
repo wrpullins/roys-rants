@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import type { FC, PropsWithChildren } from "react";
 import { useTheme } from "../../theme/useTheme";
-import type { Colors } from "../../theme/colors";
+import type { Colors, Theme } from "../../theme/theme";
 
-const StyledTextBox = styled.pre<{ colors: Colors }>`
-  border: 1px solid ${({ colors }) => colors.Secondary};
+const StyledTextBox = styled.pre<{ theme: Theme }>`
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 10px;
-  background-color: ${({ colors }) => colors.Foreground};
+  background-color: ${({ theme }) => theme.colors.foreground};
   padding: 1rem;
   max-width: 600px;
 
@@ -19,7 +19,7 @@ const StyledTextBox = styled.pre<{ colors: Colors }>`
 const TextBox: FC<PropsWithChildren> = ({ children }) => {
   const { theme } = useTheme();
 
-  return <StyledTextBox colors={theme.colors}>{children}</StyledTextBox>;
+  return <StyledTextBox theme={theme}>{children}</StyledTextBox>;
 };
 
 export default TextBox;

@@ -1,11 +1,25 @@
 import styled from "@emotion/styled";
 import { useTheme } from "../theme/useTheme";
 import { useEffect, type PropsWithChildren } from "react";
-import type { Colors } from "../theme/colors";
+import type { Theme } from "../theme/theme";
 
-const PageContainer = styled.div<{ colors: Colors; centeredContent: boolean }>`
-  color: ${({ colors }) => colors.TextPrimary};
-  background-color: ${({ colors }) => colors.Background};
+const PageContainer = styled.div<{ theme: Theme; centeredContent: boolean }>`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${({ theme }) => theme.typography.heading.font};
+    font-weight: ${({ theme }) => theme.typography.heading.weight};
+    color: ${({ theme }) => theme.colors.text.secondary};
+    margin: 0;
+  }
+
+  color: ${({ theme }) => theme.colors.text.primary};
+  font-family: ${({ theme }) => theme.typography.body.font};
+
+  background-color: ${({ theme }) => theme.colors.background};
   height: 100%;
   padding: 1rem;
 
@@ -15,6 +29,7 @@ const PageContainer = styled.div<{ colors: Colors; centeredContent: boolean }>`
       display: flex;
       align-items: center;
       justify-content: center;
+      
     `}
 `;
 
@@ -29,7 +44,7 @@ const Page: React.FC<PageProps> = ({ centeredContent = false, children }) => {
     console.log(theme);
   }, [theme]);
   return (
-    <PageContainer colors={theme.colors} centeredContent={centeredContent}>
+    <PageContainer theme={theme} centeredContent={centeredContent}>
       {children}
     </PageContainer>
   );

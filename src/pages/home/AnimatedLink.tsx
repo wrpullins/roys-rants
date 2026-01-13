@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Row from "../../components/Row";
 import { css } from "@emotion/react";
 import { useTheme } from "../../theme/useTheme";
-import type { Colors } from "../../theme/colors";
+import type { Colors } from "../../theme/theme";
 
 type AnimatedLinkProps = {
   route: string;
@@ -19,15 +19,15 @@ const style = (colors: Colors) => css`
   color: inherit;
   display: inline-block;
 
-  color: ${colors.TextPrimary};
+  color: ${colors.text.primary};
 
   &:hover {
-    color: ${colors.TextSecondary};
+    color: ${colors.text.secondary};
   }
 
   .label {
     display: inline-block;
-    width: 0;
+
     white-space: nowrap;
     opacity: 0;
     transform: translateX(-8px);
@@ -44,7 +44,6 @@ const style = (colors: Colors) => css`
   }
 
   &:hover .label {
-    width: max-content;
     opacity: 1;
     transform: translateX(0);
   }

@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from "react";
-import type { Colors } from "../theme/colors";
+import type { Colors } from "../theme/theme";
 import styled from "@emotion/styled";
 import { useTheme } from "../theme/useTheme";
 
