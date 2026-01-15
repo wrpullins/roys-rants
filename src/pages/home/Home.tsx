@@ -35,13 +35,13 @@ const Home: FC = () => {
           justifyContent="space-evenly"
         >
           <AnimatedLink
-            route="/login"
+            to="/login"
             label="login"
             icon={faArrowRightToBracket}
           />
-          <AnimatedLink route="/blog" label="Blog" icon={faBlog} />
-          <AnimatedLink route="/gallery" label="Gallery" icon={faImages} />
-          <AnimatedLink route="/cv" label="CV" icon={faAddressCard} />
+          <AnimatedLink to="/blog" label="Blog" icon={faBlog} />
+          <AnimatedLink to="/gallery" label="Gallery" icon={faImages} />
+          <AnimatedLink to="/cv" label="CV" icon={faAddressCard} />
         </Row>
 
         <TextBox>

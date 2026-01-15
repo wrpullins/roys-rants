@@ -28,7 +28,12 @@ const UnderConstruction: FC<UnderConstructionProps> = ({ page }) => {
       <img src="/under_construction.svg" />
       <h1>{`${page} is a work in progress`}</h1>
       Only so many hours in a day. Check back later.
-      <AnimatedLink route="/home" label="Return to Home" icon={faBackspace} />
+      <AnimatedLink
+        slidingLabel={false}
+        to="/home"
+        label="Home"
+        icon={faBackspace}
+      />
     </Box>
   );
 };
