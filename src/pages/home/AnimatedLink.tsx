@@ -6,33 +6,38 @@ import { Link } from "react-router-dom";
 import Row from "../../components/Row";
 import { css } from "@emotion/react";
 import { useTheme } from "../../theme/useTheme";
-import type { Colors } from "../../theme/theme";
+import type { Theme } from "../../theme/theme";
 import { MediaSizes } from "../../theme/mediaSizes";
 
 type AnimatedLinkProps = {
-  route: string;
+  to: string;
   label: string;
   icon: IconDefinition;
+  slidingLabel?: boolean;
 };
 
-const style = (colors: Colors) => css`
+const style = (theme: Theme, slidingLabel: boolean) => css`
   text-decoration: none;
   color: inherit;
   display: inline-block;
 
-  color: ${colors.text.primary};
+  color: ${theme.colors.text.primary};
 
   &:hover {
-    color: ${colors.text.secondary};
+    color: ${theme.colors.text.secondary};
   }
 
   .label {
     display: inline-block;
 
     white-space: nowrap;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    ${slidingLabel
+      ? `
+        opacity: 0;
+        transform: translateX(-8px);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      `
+      : ""}
   }
 
   svg {
@@ -44,10 +49,14 @@ const style = (colors: Colors) => css`
     transform: rotate(360deg);
   }
 
-  &:hover .label {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  ${slidingLabel
+    ? `
+      &:hover .label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    `
+    : ""}
 
   @media (width <= ${MediaSizes.small}) {
     .label {
@@ -75,12 +84,17 @@ const style = (colors: Colors) => css`
   }
 `;
 
-const AnimatedLink: FC<AnimatedLinkProps> = ({ route, label, icon }) => {
+const AnimatedLink: FC<AnimatedLinkProps> = ({
+  to,
+  label,
+  icon,
+  slidingLabel = true,
+}) => {
   const { theme } = useTheme();
 
   return (
-    <Link css={style(theme.colors)} to={route}>
-      <Row spacing="0.4rem" alignItems="center">
+    <Link css={style(theme, slidingLabel)} to={to}>
+      <Row spacing="0.4rem" alignItems="center" alignContent="center">
         <FontAwesomeIcon icon={icon} />
         <span className="label">{label}</span>
       </Row>
