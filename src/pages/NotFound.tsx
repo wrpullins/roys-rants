@@ -76,11 +76,7 @@ const NotFound: FC = () => {
           <div className="message">
             Not sure how you arrived here, so fuck off.
           </div>
-          <AnimatedLink
-            route="/home"
-            label="Return to Home"
-            icon={faBackspace}
-          />
+          <AnimatedLink to="/home" label="Return to Home" icon={faBackspace} />
         </div>
       </StyledNotFound>
     </Page>
