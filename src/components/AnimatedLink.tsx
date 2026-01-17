@@ -3,11 +3,11 @@ import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { FC } from "react";
 import { Link } from "react-router-dom";
-import Row from "../../components/Row";
+import Row from "./layout/Row";
 import { css } from "@emotion/react";
-import { useTheme } from "../../theme/useTheme";
-import type { Theme } from "../../theme/theme";
-import { MediaSizes } from "../../theme/mediaSizes";
+import { useTheme } from "../theme/useTheme";
+import { spacing, type Theme } from "../theme";
+import { MediaSizes } from "../theme/mediaSizes";
 
 type AnimatedLinkProps = {
   to: string;
@@ -94,7 +94,7 @@ const AnimatedLink: FC<AnimatedLinkProps> = ({
 
   return (
     <Link css={style(theme, slidingLabel)} to={to}>
-      <Row spacing="0.4rem" alignItems="center" alignContent="center">
+      <Row spacing={spacing.hu} alignItems="center" alignContent="center">
         <FontAwesomeIcon icon={icon} />
         <span className="label">{label}</span>
       </Row>

@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import type { FC } from "react";
-import Page from "../../components/Page";
+import Page from "../../components/layout/Page";
 import { FancyTitle } from "./FancyTitle";
 import TextBox from "../../components/TextBox";
-import Box from "../../components/Box";
+import Box from "../../components/layout/Box";
 import Anchor from "../../components/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
-import Row from "../../components/Row";
-import AnimatedLink from "./AnimatedLink";
+import Row from "../../components/layout/Row";
+import AnimatedLink from "../../components/AnimatedLink";
 import {
   faAddressCard,
   faArrowRightToBracket,
@@ -15,6 +15,7 @@ import {
   faImages,
 } from "@fortawesome/free-solid-svg-icons";
 import { css } from "@emotion/react";
+import { spacing } from "../../theme";
 
 const mainContenntStyle = css`
   max-width: 650px;
@@ -29,7 +30,7 @@ const Home: FC = () => {
         <FancyTitle />
 
         <Row
-          spacing="1rem"
+          spacing={spacing.u}
           alignItems="center"
           alignContent="center"
           justifyContent="space-evenly"
