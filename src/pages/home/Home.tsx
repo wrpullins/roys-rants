@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import type { FC } from "react";
+import { useEffect, type FC } from "react";
 import Page from "../../components/layout/Page";
 import { FancyTitle } from "./FancyTitle";
 import TextBox from "../../components/TextBox";
@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { css } from "@emotion/react";
 import { spacing } from "../../theme";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 const mainContenntStyle = css`
   max-width: 650px;
@@ -23,6 +24,9 @@ const mainContenntStyle = css`
 `;
 
 const Home: FC = () => {
+
+  const user = useAuthStore((state) => state.user);
+  
   return (
     <Page centeredContent>
       <ThemeToggle />
@@ -35,16 +39,17 @@ const Home: FC = () => {
           alignContent="center"
           justifyContent="space-evenly"
         >
-          <AnimatedLink
+          {!user && <AnimatedLink
             to="/login"
             label="login"
             icon={faArrowRightToBracket}
-          />
+          />}
           <AnimatedLink to="/blog" label="Blog" icon={faBlog} />
           <AnimatedLink to="/gallery" label="Gallery" icon={faImages} />
           <AnimatedLink to="/cv" label="CV" icon={faAddressCard} />
         </Row>
 
+        {user && <Row>Welcome back {`${user.firstName}`}</Row>}
         <TextBox>
           <p>
             If you are happy and you know it, clap your hands, but I would
