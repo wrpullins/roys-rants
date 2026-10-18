@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import type { FC } from "react";
-import Page from "../../components/Page";
+import { useEffect, type FC } from "react";
+import Page from "../../components/layout/Page";
 import { FancyTitle } from "./FancyTitle";
 import TextBox from "../../components/TextBox";
-import Box from "../../components/Box";
+import Box from "../../components/layout/Box";
 import Anchor from "../../components/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
-import Row from "../../components/Row";
-import AnimatedLink from "./AnimatedLink";
+import Row from "../../components/layout/Row";
+import AnimatedLink from "../../components/AnimatedLink";
 import {
   faAddressCard,
   faArrowRightToBracket,
@@ -15,6 +15,8 @@ import {
   faImages,
 } from "@fortawesome/free-solid-svg-icons";
 import { css } from "@emotion/react";
+import { spacing } from "../../theme";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 const mainContenntStyle = css`
   max-width: 650px;
@@ -22,6 +24,9 @@ const mainContenntStyle = css`
 `;
 
 const Home: FC = () => {
+
+  const user = useAuthStore((state) => state.user);
+  
   return (
     <Page centeredContent>
       <ThemeToggle />
@@ -29,21 +34,22 @@ const Home: FC = () => {
         <FancyTitle />
 
         <Row
-          spacing="1rem"
+          spacing={spacing.u}
           alignItems="center"
           alignContent="center"
           justifyContent="space-evenly"
         >
-          <AnimatedLink
+          {!user && <AnimatedLink
             to="/login"
             label="login"
             icon={faArrowRightToBracket}
-          />
+          />}
           <AnimatedLink to="/blog" label="Blog" icon={faBlog} />
           <AnimatedLink to="/gallery" label="Gallery" icon={faImages} />
           <AnimatedLink to="/cv" label="CV" icon={faAddressCard} />
         </Row>
 
+        {user && <Row>Welcome back {`${user.firstName}`}</Row>}
         <TextBox>
           <p>
             If you are happy and you know it, clap your hands, but I would

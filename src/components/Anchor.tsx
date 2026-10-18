@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import type { FC, PropsWithChildren } from "react";
-import { useTheme } from "../theme/useTheme";
-import type { Colors } from "../theme/theme";
+import { useTheme, type Colors } from "../theme";
 
 type AnchorProps = { href: string } & PropsWithChildren;
 

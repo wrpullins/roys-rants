@@ -1,1 +1,2 @@
-type UndefOr<T> = undefined | T;
+type UndefOr<T> = T | undefined;
+type NullOr<T> = T | null;

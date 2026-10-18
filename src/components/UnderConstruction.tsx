@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import type { FC } from "react";
-import Box from "./Box";
+import Box from "./layout/Box";
 import { css } from "@emotion/react";
-import AnimatedLink from "../pages/home/AnimatedLink";
+import AnimatedLink from "./AnimatedLink";
 import { faBackspace } from "@fortawesome/free-solid-svg-icons";
 import { MediaSizes } from "../theme/mediaSizes";
 

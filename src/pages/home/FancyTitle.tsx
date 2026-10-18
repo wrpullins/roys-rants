@@ -1,5 +1,5 @@
 import { useEffect, type FC } from "react";
-import type { Theme } from "../../theme/theme";
+import type { Theme } from "../../theme";
 import { useTheme } from "../../theme/useTheme";
 import styled from "@emotion/styled";
 import { MediaSizes } from "../../theme/mediaSizes";
@@ -22,7 +22,7 @@ const StyledFancyTitle = styled.div<{ theme: Theme }>`
     color: ${({ theme }) => theme.colors.text.secondary};
 
     div {
-      border-top: 1px solid ${({ theme }) => theme.colors.secondary};
+      border-top: 1px solid ${({ theme }) => theme.colors.secondary300};
       font-size: 1rem;
     }
   }

@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:api": "kubb generate",
+    "generate:api:prod": "node --env-file=.env.production ./node_modules/kubb/bin/kubb.js generate"
   },
   "dependencies": {
     "@emotion/styled": "^11.14.1",
@@ -15,15 +17,24 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
+    "@primeuix/themes": "^2.0.2",
+    "@tanstack/react-query": "^5.104.3",
+    "axios": "^1.20.0",
     "emotion": "^11.0.0",
+    "jwt-decode": "^4.0.0",
+    "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.12.0"
+    "react-router-dom": "^7.12.0",
+    "zustand": "^5.0.10"
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",
     "@eslint/js": "^9.39.1",
+    "@kubb/plugin-axios": "^5.7.0",
+    "@kubb/plugin-react-query": "^5.5.3",
+    "@kubb/plugin-ts": "^5.0.14",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
@@ -32,6 +43,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "kubb": "^5.11.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"

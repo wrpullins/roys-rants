@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import type { PropsWithChildren } from "react";
+import type { Space } from "../../theme";
 
-type RowProps = {
-  spacing?: string; // maps to gap
-  padding?: string;
-  margin?: string;
+type BoxProps = {
+  spacing?: Space; // maps to gap
+  padding?: Space;
+  margin?: Space;
   justifyContent?:
     | "flex-start"
     | "flex-end"
@@ -23,13 +24,12 @@ type RowProps = {
     | "space-around";
 } & PropsWithChildren;
 
-const Row = styled.div<RowProps>`
+const Box = styled.div<BoxProps>`
   display: flex;
-  flex-direction: row;
-
-  ${({ spacing }) => spacing && `gap: ${spacing};`}
-  ${({ padding }) => padding && `padding: ${padding};`}
-  ${({ margin }) => margin && `margin: ${margin};`}
+  flex-direction: column;
+  ${({ spacing }) => spacing && `gap: ${spacing.px};`}
+  ${({ padding }) => padding && `padding: ${padding.px};`}
+  ${({ margin }) => margin && `margin: ${margin.px};`}
   ${({ justifyContent }) =>
     justifyContent && `justify-content: ${justifyContent};`}
   ${({ flexWrap }) => flexWrap && `flex-wrap: ${flexWrap};`}
@@ -37,4 +37,4 @@ const Row = styled.div<RowProps>`
   ${({ alignContent }) => alignContent && `align-content: ${alignContent};`}
 `;
 
-export default Row;
+export default Box;

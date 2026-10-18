@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { useTheme } from "../theme/useTheme";
+import { useTheme } from "../../theme/useTheme";
 import { useEffect, type PropsWithChildren } from "react";
-import type { Theme } from "../theme/theme";
-import { MediaSizes } from "../theme/mediaSizes";
+import type { Theme } from "../../theme";
+import { MediaSizes } from "../../theme/mediaSizes";
 
 const PageContainer = styled.div<{ theme: Theme; centeredContent: boolean }>`
   h1,
@@ -47,9 +47,6 @@ type PageProps = PropsWithChildren & {
 const Page: React.FC<PageProps> = ({ centeredContent = false, children }) => {
   const { theme } = useTheme();
 
-  useEffect(() => {
-    console.log(theme);
-  }, [theme]);
   return (
     <PageContainer theme={theme} centeredContent={centeredContent}>
       {children}

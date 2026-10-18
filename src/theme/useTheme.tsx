@@ -5,7 +5,7 @@ import {
   useState,
   type PropsWithChildren,
 } from "react";
-import type { Theme } from "./theme";
+import type { Theme } from "./themeTypes";
 
 type ThemeContextValue = {
   theme: Theme;
