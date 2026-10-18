@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useTheme } from "../../theme/useTheme";
-import { useEffect, type PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import type { Theme } from "../../theme";
 import { MediaSizes } from "../../theme/mediaSizes";
 
