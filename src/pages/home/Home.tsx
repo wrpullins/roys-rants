@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, type FC } from "react";
+import { type FC } from "react";
 import Page from "../../components/layout/Page";
 import { FancyTitle } from "./FancyTitle";
 import TextBox from "../../components/TextBox";
@@ -26,7 +26,7 @@ const mainContenntStyle = css`
 const Home: FC = () => {
 
   const user = useAuthStore((state) => state.user);
-  
+
   return (
     <Page centeredContent>
       <ThemeToggle />
