@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { User } from "../types";
 import { jwtDecode } from "jwt-decode";
+import { client } from "../api/generated/.kubb/client";
 
 type AuthState = {
   authenticated: boolean;
@@ -15,6 +16,13 @@ export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   setToken: (token: string) => {
     const decodedToken = jwtDecode(token) as User;
+
+    client.setConfig({
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
     set({ authenticated: true, token, user: decodedToken });
   },
 }));

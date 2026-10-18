@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Roy's Rants
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React, TypeScript, and Vite application.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install dependencies and start the local development server:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available commands
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server. |
+| `npm run build` | Type-check and build the production app. |
+| `npm run preview` | Preview the production build locally. |
+| `npm run lint` | Run ESLint. |
+| `npm run generate:api` | Regenerate typed API code with Kubb. |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## API code generation
+
+Vite uses `VITE_API_URL` from `.env.development` for `npm run dev` and `.env.production` for `npm run build`. These point to `http://localhost:8080/api` and `http://roys-rants-api.us-east-1.elasticbeanstalk.com/api`, respectively. Override settings locally with `.env.development.local` or `.env.production.local` (ignored by Git). `VITE_` values are public browser configuration; do not put secrets in them.
+
+Kubb loads the development environment by default and reads `/v3/api-docs` from the configured API host. Run `npm run generate:api:prod` to read the production schema instead. It writes TypeScript models, Axios clients, and TanStack Query hooks to `src/api/generated`. The generated directory is cleaned before each generation, so keep handwritten code elsewhere.
+
+Generated clients read the API host from Vite's environment at build time, so the same generated code works in both environments. OpenAPI paths already contain `/api`, so the generated client uses only the URL origin to avoid duplicating that prefix. The handwritten requests client uses the full API URL.
+
+Hooks are exported from `src/api/generated/hooks`. They require a TanStack Query `QueryClientProvider` above the component using them.
+
+Start the backend before running the generator:
+
+```sh
+npm run generate:api
 ```
+
+The API docs UI is available at [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html). Kubb uses the raw OpenAPI document endpoint (`/v3/api-docs`), rather than the UI page. If the backend uses a custom OpenAPI docs path, update the `input` URL in `kubb.config.ts`.
