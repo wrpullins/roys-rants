@@ -6,6 +6,7 @@ import {
   type PropsWithChildren,
 } from "react";
 import type { Theme } from "./themeTypes";
+import { setStoredTheme } from "./storedTheme";
 
 type ThemeContextValue = {
   theme: Theme;
@@ -25,10 +26,14 @@ export const ThemeProvider = ({
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
   const value = useMemo(
-    () => ({
-      theme,
-      setTheme,
-    }),
+    () => {
+      setStoredTheme(theme)
+
+      return {
+        theme,
+        setTheme,
+      }
+    },
     [theme]
   );
 
