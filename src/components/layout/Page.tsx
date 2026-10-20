@@ -3,6 +3,7 @@ import { useTheme } from "../../theme/useTheme";
 import type { PropsWithChildren } from "react";
 import type { Theme } from "../../theme";
 import { MediaSizes } from "../../theme/mediaSizes";
+import { usePageVisit } from "../../hooks/usePageVisit";
 
 const PageContainer = styled.div<{ theme: Theme; centeredContent: boolean }>`
   h1,
@@ -46,6 +47,7 @@ type PageProps = PropsWithChildren & {
 
 const Page: React.FC<PageProps> = ({ centeredContent = false, children }) => {
   const { theme } = useTheme();
+  usePageVisit();
 
   return (
     <PageContainer theme={theme} centeredContent={centeredContent}>

@@ -972,6 +972,8 @@ export async function toEventStream<TData = unknown>(result: Promise<{ data: unk
   }
 }
 
-export const client = createClientCore({ defaultTransport, baseURL: `${new URL(import.meta.env.VITE_API_URL).origin}` })
+export const client = createClientCore({ defaultTransport })
 
 export const createClient = (config?: Parameters<typeof client.createClient>[0]) => client.createClient(config)
+
+client.setConfig({ baseURL: `${new URL(import.meta.env.VITE_API_URL).origin}` })
