@@ -5,18 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DarkTheme, LightTheme, useTheme, type Colors } from "../../theme";
 
 const ToggleButton = styled.button<{ colors: Colors }>`
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   border: none;
   background-color: transparent;
   font-size: 2rem;
   cursor: pointer;
   color: ${({ colors }) => colors.secondary300};
-`;
-
-const AbsoluteBox = styled.div`
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  padding: 1rem;
 `;
 
 export const ThemeToggle: FC = () => {
@@ -27,16 +25,15 @@ export const ThemeToggle: FC = () => {
   const toggleTheme = () =>
     isLight ? setTheme(DarkTheme) : setTheme(LightTheme);
 
-  const button = () =>
-    isLight ? (
-      <ToggleButton colors={theme.colors} onClick={toggleTheme}>
-        <FontAwesomeIcon icon={faToggleOff} />
-      </ToggleButton>
-    ) : (
-      <ToggleButton colors={theme.colors} onClick={toggleTheme}>
-        <FontAwesomeIcon icon={faToggleOn} />
-      </ToggleButton>
-    );
-
-  return <AbsoluteBox>{button()}</AbsoluteBox>;
+  return (
+    <ToggleButton
+      type="button"
+      colors={theme.colors}
+      onClick={toggleTheme}
+      aria-label="Dark mode"
+      aria-pressed={!isLight}
+    >
+      <FontAwesomeIcon icon={isLight ? faToggleOff : faToggleOn} />
+    </ToggleButton>
+  );
 };

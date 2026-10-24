@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import Page from "../../components/layout/Page";
-import UnderConstruction from "../../components/UnderConstruction";
+import Page from "../../shared/layout/Page";
+import UnderConstruction from "../../shared/UnderConstruction";
 
 const CV: FC = () => {
   return (

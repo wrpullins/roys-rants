@@ -14,14 +14,15 @@ type AnimatedLinkProps = {
   label: string;
   icon: IconDefinition;
   slidingLabel?: boolean;
-};
-
-const style = (theme: Theme, slidingLabel: boolean) => css`
+  active?: boolean;
+}
+const style = (theme: Theme, slidingLabel: boolean, active: boolean) => css`
   text-decoration: none;
   color: inherit;
   display: inline-block;
+  padding-bottom: 2px;
 
-  color: ${theme.colors.text.primary};
+  color: ${active ? theme.colors.text.secondary : theme.colors.text.primary};
 
   &:hover {
     color: ${theme.colors.text.secondary};
@@ -89,11 +90,16 @@ const AnimatedLink: FC<AnimatedLinkProps> = ({
   label,
   icon,
   slidingLabel = true,
+  active = false,
 }) => {
   const { theme } = useTheme();
 
   return (
-    <Link css={style(theme, slidingLabel)} to={to}>
+    <Link
+      css={style(theme, slidingLabel, active)}
+      to={to}
+      aria-current={active ? "page" : undefined}
+    >
       <Row spacing={spacing.hu} alignItems="center" alignContent="center">
         <FontAwesomeIcon icon={icon} />
         <span className="label">{label}</span>

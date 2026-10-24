@@ -1,5 +1,5 @@
 import { useEffect, useState, type FC } from "react";
-import Page from "../components/layout/Page";
+import Page from "../shared/layout/Page";
 import styled from "@emotion/styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,7 +8,7 @@ import {
   faLinkSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme, type Theme } from "../theme";
-import AnimatedLink from "../components/AnimatedLink";
+import AnimatedLink from "../shared/AnimatedLink";
 
 const StyledNotFound = styled.div<{ theme: Theme }>`
   display: flex;

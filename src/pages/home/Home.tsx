@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { type FC } from "react";
-import Page from "../../components/layout/Page";
+import Page from "../../shared/layout/Page";
 import { FancyTitle } from "./FancyTitle";
-import TextBox from "../../components/TextBox";
-import Box from "../../components/layout/Box";
-import Anchor from "../../components/Anchor";
+import TextBox from "../../shared/TextBox";
+import Box from "../../shared/layout/Box";
+import Anchor from "../../shared/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
-import Row from "../../components/layout/Row";
-import AnimatedLink from "../../components/AnimatedLink";
+import Row from "../../shared/layout/Row";
+import AnimatedLink from "../../shared/AnimatedLink";
 import {
   faAddressCard,
   faArrowRightToBracket,
@@ -23,13 +23,22 @@ const mainContenntStyle = css`
   min-width: 300px;
 `;
 
+const themeToggleStyle = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+`;
+
 const Home: FC = () => {
 
   const user = useAuthStore((state) => state.user);
 
   return (
     <Page centeredContent>
-      <ThemeToggle />
+      <div css={themeToggleStyle}>
+        <ThemeToggle />
+      </div>
       <Box css={mainContenntStyle}>
         <FancyTitle />
 
