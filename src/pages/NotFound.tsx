@@ -8,7 +8,7 @@ import {
   faLinkSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme, type Theme } from "../theme";
-import AnimatedLink from "../shared/AnimatedLink";
+import AnimatedLink from "../shared/nav/AnimatedLink";
 
 const StyledNotFound = styled.div<{ theme: Theme }>`
   display: flex;

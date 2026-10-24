@@ -7,7 +7,7 @@ import Box from "../../shared/layout/Box";
 import Anchor from "../../shared/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
 import Row from "../../shared/layout/Row";
-import AnimatedLink from "../../shared/AnimatedLink";
+import AnimatedLink from "../../shared/nav/AnimatedLink";
 import {
   faAddressCard,
   faArrowRightToBracket,

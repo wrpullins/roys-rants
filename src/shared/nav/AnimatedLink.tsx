@@ -3,11 +3,11 @@ import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { FC } from "react";
 import { Link } from "react-router-dom";
-import Row from "./layout/Row";
+import Row from "../layout/Row";
 import { css } from "@emotion/react";
-import { useTheme } from "../theme/useTheme";
-import { spacing, type Theme } from "../theme";
-import { MediaSizes } from "../theme/mediaSizes";
+import { useTheme } from "../../theme/useTheme";
+import { spacing, type Theme } from "../../theme";
+import { MediaSizes } from "../../theme/mediaSizes";
 
 type AnimatedLinkProps = {
   to: string;

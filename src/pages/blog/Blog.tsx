@@ -8,18 +8,11 @@ import {
   faImages,
 } from "@fortawesome/free-solid-svg-icons";
 import Page from "../../shared/layout/Page";
-import AnimatedLink from "../../shared/AnimatedLink";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import ToolBar from "../../shared/layout/ToolBar";
 import { ThemeToggle } from "../home/ThemeToggle";
-
-const Navigation = styled.nav`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  min-width: 0;
-`;
+import { Navigation } from "../../shared/nav/Navigation";
+import AnimatedLink from "../../shared/nav/AnimatedLink";
 
 const Blog: FC = () => {
   const user = useAuthStore((state) => state.user);
