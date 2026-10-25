@@ -2,9 +2,9 @@
 import type { FC } from "react";
 import Box from "./layout/Box";
 import { css } from "@emotion/react";
-import AnimatedLink from "./nav/AnimatedLink";
 import { faBackspace } from "@fortawesome/free-solid-svg-icons";
 import { MediaSizes } from "../theme/mediaSizes";
+import AnimatedLink from "./nav/AnimatedLink";
 
 type UnderConstructionProps = {
   page: string;

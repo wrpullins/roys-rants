@@ -7,7 +7,6 @@ import Box from "../../shared/layout/Box";
 import Anchor from "../../shared/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
 import Row from "../../shared/layout/Row";
-import AnimatedLink from "../../shared/nav/AnimatedLink";
 import {
   faAddressCard,
   faArrowRightToBracket,
@@ -17,6 +16,8 @@ import {
 import { css } from "@emotion/react";
 import { spacing } from "../../theme";
 import { useAuthStore } from "../../hooks/useAuthStore";
+import AnimatedLink from "../../shared/nav/AnimatedLink";
+import { Navigation } from "../../shared/nav/Navigation";
 
 const mainContenntStyle = css`
   max-width: 650px;
@@ -31,7 +32,6 @@ const themeToggleStyle = css`
 `;
 
 const Home: FC = () => {
-
   const user = useAuthStore((state) => state.user);
 
   return (
@@ -42,21 +42,7 @@ const Home: FC = () => {
       <Box css={mainContenntStyle}>
         <FancyTitle />
 
-        <Row
-          spacing={spacing.u}
-          alignItems="center"
-          alignContent="center"
-          justifyContent="space-evenly"
-        >
-          {!user && <AnimatedLink
-            to="/login"
-            label="login"
-            icon={faArrowRightToBracket}
-          />}
-          <AnimatedLink to="/blog" label="Blog" icon={faBlog} />
-          <AnimatedLink to="/gallery" label="Gallery" icon={faImages} />
-          <AnimatedLink to="/cv" label="CV" icon={faAddressCard} />
-        </Row>
+        <Navigation active="home" />
 
         {user && <Row>Welcome back {`${user.firstName}`}</Row>}
         <TextBox>

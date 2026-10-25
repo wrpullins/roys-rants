@@ -3,11 +3,9 @@ import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { FC } from "react";
 import { Link } from "react-router-dom";
-import Row from "../layout/Row";
 import { css } from "@emotion/react";
-import { useTheme } from "../../theme/useTheme";
-import { spacing, type Theme } from "../../theme";
-import { MediaSizes } from "../../theme/mediaSizes";
+import { MediaSizes, spacing, useTheme, type Theme } from "../../theme";
+import Row from "../layout/Row";
 
 type AnimatedLinkProps = {
   to: string;
@@ -15,7 +13,7 @@ type AnimatedLinkProps = {
   icon: IconDefinition;
   slidingLabel?: boolean;
   active?: boolean;
-}
+};
 const style = (theme: Theme, slidingLabel: boolean, active: boolean) => css`
   text-decoration: none;
   color: inherit;
