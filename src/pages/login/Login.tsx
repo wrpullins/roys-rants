@@ -1,15 +1,15 @@
 ﻿import { useState, type FC } from "react";
-import Page from "../../components/layout/Page";
+import Page from "../../shared/layout/Page";
 import { useLogin } from "../../api/generated/hooks/useLogin";
 import { useAuthStore } from "../../hooks/useAuthStore";
-import Box from "../../components/layout/Box";
+import Box from "../../shared/layout/Box";
 
-import { TextInput } from "../../components/inputs/InputText";
+import { TextInput } from "../../shared/inputs/InputText";
 import { useForm } from "../../hooks/useForm";
-import { Button } from "../../components/Button";
+import { Button } from "../../shared/Button";
 import { spacing } from "../../theme";
 import { useNavigate } from "react-router-dom";
-import { Error } from "../../components/errors/Error";
+import { Error } from "../../shared/errors/Error";
 
 
 const Login: FC = () => {

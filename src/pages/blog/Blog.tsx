@@ -1,11 +1,16 @@
 import type { FC } from "react";
-import Page from "../../components/layout/Page";
-import UnderConstruction from "../../components/UnderConstruction";
+import Page from "../../shared/layout/Page";
+import ToolBar from "../../shared/layout/ToolBar";
+import { ThemeToggle } from "../home/ThemeToggle";
+import { Navigation } from "../../shared/nav/Navigation";
 
 const Blog: FC = () => {
   return (
-    <Page centeredContent>
-      <UnderConstruction page="Blog" />
+    <Page>
+      <ToolBar>
+        <Navigation active="blog" />
+        <ThemeToggle />
+      </ToolBar>
     </Page>
   );
 };

@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { type FC } from "react";
-import Page from "../../components/layout/Page";
+import Page from "../../shared/layout/Page";
 import { FancyTitle } from "./FancyTitle";
-import TextBox from "../../components/TextBox";
-import Box from "../../components/layout/Box";
-import Anchor from "../../components/Anchor";
+import TextBox from "../../shared/TextBox";
+import Box from "../../shared/layout/Box";
+import Anchor from "../../shared/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
-import Row from "../../components/layout/Row";
-import AnimatedLink from "../../components/AnimatedLink";
+import Row from "../../shared/layout/Row";
 import {
   faAddressCard,
   faArrowRightToBracket,
@@ -17,37 +16,33 @@ import {
 import { css } from "@emotion/react";
 import { spacing } from "../../theme";
 import { useAuthStore } from "../../hooks/useAuthStore";
+import AnimatedLink from "../../shared/nav/AnimatedLink";
+import { Navigation } from "../../shared/nav/Navigation";
 
 const mainContenntStyle = css`
   max-width: 650px;
   min-width: 300px;
 `;
 
-const Home: FC = () => {
+const themeToggleStyle = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+`;
 
+const Home: FC = () => {
   const user = useAuthStore((state) => state.user);
 
   return (
     <Page centeredContent>
-      <ThemeToggle />
+      <div css={themeToggleStyle}>
+        <ThemeToggle />
+      </div>
       <Box css={mainContenntStyle}>
         <FancyTitle />
 
-        <Row
-          spacing={spacing.u}
-          alignItems="center"
-          alignContent="center"
-          justifyContent="space-evenly"
-        >
-          {!user && <AnimatedLink
-            to="/login"
-            label="login"
-            icon={faArrowRightToBracket}
-          />}
-          <AnimatedLink to="/blog" label="Blog" icon={faBlog} />
-          <AnimatedLink to="/gallery" label="Gallery" icon={faImages} />
-          <AnimatedLink to="/cv" label="CV" icon={faAddressCard} />
-        </Row>
+        <Navigation active="home" />
 
         {user && <Row>Welcome back {`${user.firstName}`}</Row>}
         <TextBox>
