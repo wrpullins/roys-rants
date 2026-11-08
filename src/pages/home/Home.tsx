@@ -7,16 +7,8 @@ import Box from "../../shared/layout/Box";
 import Anchor from "../../shared/Anchor";
 import { ThemeToggle } from "./ThemeToggle";
 import Row from "../../shared/layout/Row";
-import {
-  faAddressCard,
-  faArrowRightToBracket,
-  faBlog,
-  faImages,
-} from "@fortawesome/free-solid-svg-icons";
 import { css } from "@emotion/react";
-import { spacing } from "../../theme";
 import { useAuthStore } from "../../hooks/useAuthStore";
-import AnimatedLink from "../../shared/nav/AnimatedLink";
 import { Navigation } from "../../shared/nav/Navigation";
 
 const mainContenntStyle = css`
